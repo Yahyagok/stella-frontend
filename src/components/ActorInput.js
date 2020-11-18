@@ -10,9 +10,9 @@ class ActorInput extends React.Component {
     state = {
         name: '', 
         image: '',
-        contact_info: '',
-        city_id: '',
-        agency_id: '',
+        contactInfo: '',
+        cityId: '',
+        agencyId: '',
         description: ''
     }
 
@@ -30,9 +30,9 @@ class ActorInput extends React.Component {
         this.setState({ 
             name: '', 
             image: '',
-            contact_info: '',
-            city_id: '',
-            agency_id: '',
+            contactInfo: '',
+            cityId: '',
+            agencyId: '',
             description: ''  
          })
     }

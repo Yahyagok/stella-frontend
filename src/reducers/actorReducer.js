@@ -1,20 +1,13 @@
-
-export default function actorReducer(state = { actors: []}, action ){
-
+export default function actorReducer(state = [], action ){
         switch(action.type){
                 case 'FETCH_ACTORS':
-                        return { actors: action.payload }
+                        return action.payload.data
                 case 'ADD_ACTOR':
-                        return { ...state, actors: [...state.actors, action.payload.data] }
+                        return [...state, action.payload.data] 
                 default:
-                        return state
-                         
+                        return state                  
         }
 }
-
-
- 
-
 // what is a reducer really 
 // you define action type and , it takes prev state, and action , it will update the reducer 
 

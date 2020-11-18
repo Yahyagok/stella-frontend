@@ -1,7 +1,7 @@
-export const addActor = (data) => {
+export const addLike = (data) => {
  
     return (dispatch) => {
-        fetch('http://localhost:3000/api/v1/actors',  {
+        fetch('http://localhost:3000/api/v1/likes',{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -10,7 +10,7 @@ export const addActor = (data) => {
             body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(actor => dispatch({ type: 'ADD_ACTOR', payload: actor }))
+        .then(like => dispatch({ type: 'ADD_LIKE', payload: like }))
     }
     
 }
