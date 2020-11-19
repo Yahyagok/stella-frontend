@@ -4,8 +4,8 @@ import UserShow from '../components/UserShow'
  
 function NavBar (props){
     return (
-        <div>
-            <UserShow  currentUser= {props.currentUser} />
+        <div> 
+            <UserShow  currentUser= {props.currentUser} logout={props.logout} />
         </div>
     )
 }

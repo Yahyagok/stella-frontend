@@ -34,7 +34,6 @@ class SignUp extends React.Component {
       
          
         if (response.data.status === 'created') {
-          console.log("hata")
           this.props.handleLogin(response.data)
           this.redirect()
         } else {

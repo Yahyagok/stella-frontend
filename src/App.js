@@ -19,9 +19,7 @@ class App extends React.Component {
         user: {}
        };
     
-  componentDidMount() {
-      this.loginStatus()
-    }
+
   loginStatus = () => {
       axios.get('http://localhost:3000/logged_in', {withCredentials: true})
       .then(response => {
@@ -37,26 +35,58 @@ class App extends React.Component {
    
       this.setState({
         isLoggedIn: true,
-        user: data.user.data
-      })
+        user: data.user
+      }, () => {localStorage.user_id = data.user.id})
     }
   handleLogout = () => {
       this.setState({
       isLoggedIn: false,
       user: {}
+      }, () => {
+        localStorage.removeItem("user_id")
+        this.props.history.push('/login')
       })
     }
 
+    componentDidMount() {
+      this.loginStatus()
+
+      const user_id = localStorage.user_id
+
+      if(user_id){
+        fetch('http://localhost:3000/auto_login', {
+          headers: {
+            "Authorization": user_id
+          }
+        })
+        .then(res => res.json())
+        .then(response => {
+          if(response.errors){
+            alert(response.errors)
+          }else {
+            this.setState({  user: response})
+          }
+        
+
+        })
+      }
+    }
+
+
+
   render() {
+    // console.log("user", this.state.user)
     return (
       <div className="App">
-        <NavBar currentUser = {this.state.user} /> 
+      
            <BrowserRouter>
-          <Switch>
+           <NavBar  currentUser = {this.state.user}  logout={this.handleLogout}/> 
+          <Switch> 
+      
             <Route exact path="/users" render={() => <UsersContainer />}   />
             <Route exact path="/likes" render={() => <LikesContainer />}   />
             <Route exact path="/comments" render={() => <CommentsContainer  />}   />
-            <Route exact path="/actors" render={() => <ActorsContainer  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
+            <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps}  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
             <Route 
               exact path='/' 
               render={props => (

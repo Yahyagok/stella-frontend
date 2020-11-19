@@ -10,6 +10,7 @@ import { combineReducers } from "redux";
 import App from './App';
 import likeReducer from './reducers/likeReducer'
 import userReducer from './reducers/userReducer'
+import { Route} from 'react-router-dom'
 
 const rootReducer = combineReducers( { 
     actors: actorReducer, 
@@ -32,7 +33,7 @@ let store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)))
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <  App />    
+            <Route  component= {App} />   
         </Router>
      </Provider>
      ,

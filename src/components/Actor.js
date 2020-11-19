@@ -8,11 +8,12 @@ import LikeInput from '../components/LikeInput'
 
 
 const Actor = (props) => {
-    
-    let actor = props.actors.find(actor => actor.id === props.match.params.id)
+    // console.log(props)
+    // debugger
+    let actor = props.actors.find(actor => actor.id ===parseInt(props.match.params.id))
 //   console.log(props.loggedInUser)
     return (
-       
+      
         <div>
                 {actor ? null : <Redirect to='/actors'/> }
                 <div><img src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} /></div>
