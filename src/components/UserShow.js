@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function UserShow(props){
+
+    // props.currentUser is your user 
+
+  
     
     return (
         <div>
@@ -14,7 +18,14 @@ function UserShow(props){
     )
 }
 
+
+
 export default UserShow
+
+
+// burdaki id yi alip , msp yi userinput ta kullnamak 
+//thaht is it 
+
 
 
 

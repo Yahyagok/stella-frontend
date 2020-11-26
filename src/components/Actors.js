@@ -8,7 +8,7 @@ const Actors = (props) => {
         <div>
               {props.actors && props.actors.map(actor => 
        <li key={actor.id}>
-        <Link to={`${props.match.path}/${actor.id}`}>{actor.attributes.name}</Link>
+        <Link to={`/actors/${actor.id}`}>{actor.attributes.name}</Link>
         </li>
         )}
         </div>

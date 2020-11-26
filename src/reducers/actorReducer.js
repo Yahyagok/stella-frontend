@@ -8,6 +8,8 @@ export default function actorReducer(state = [], action ){
                         return state                  
         }
 }
+
+
 // what is a reducer really 
 // you define action type and , it takes prev state, and action , it will update the reducer 
 

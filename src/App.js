@@ -5,14 +5,23 @@ import CommentsContainer from './containers/CommentsContainer'
 import LikesContainer from './containers/LikesContainer.js'
 import UsersContainer from './containers/UsersContainer.js'
 import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
+import { fetchActors } from './actions/fetchActors'
+import { connect} from 'react-redux';
+import Actor from './components/Actor';
+
 
 
 class App extends React.Component {
+
+ 
+  
+  
+  
 
     state = { 
         isLoggedIn: false,
@@ -31,12 +40,14 @@ class App extends React.Component {
       })
       .catch(error => console.log('api errors:', error))
     }
-  handleLogin = (data) => {
-   
+  handleLogin = (data) => { 
       this.setState({
         isLoggedIn: true,
         user: data.user
-      }, () => {localStorage.user_id = data.user.id})
+      },
+       () => 
+      {localStorage.user_id = data.user.id}
+      )
     }
   handleLogout = () => {
       this.setState({
@@ -49,10 +60,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+      this.props.fetchActors()
       this.loginStatus()
-
       const user_id = localStorage.user_id
-
       if(user_id){
         fetch('http://localhost:3000/auto_login', {
           headers: {
@@ -66,8 +76,6 @@ class App extends React.Component {
           }else {
             this.setState({  user: response})
           }
-        
-
         })
       }
     }
@@ -78,15 +86,14 @@ class App extends React.Component {
     // console.log("user", this.state.user)
     return (
       <div className="App">
-      
-           <BrowserRouter>
            <NavBar  currentUser = {this.state.user}  logout={this.handleLogout}/> 
-          <Switch> 
-      
+            <Switch> 
             <Route exact path="/users" render={() => <UsersContainer />}   />
             <Route exact path="/likes" render={() => <LikesContainer />}   />
             <Route exact path="/comments" render={() => <CommentsContainer  />}   />
-            <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps}  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
+            <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} actors={this.props.actors} loggedInUser={this.props.loggedInUser} />}/>
+            <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps} actors={this.props.actors} loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
+         
             <Route 
               exact path='/' 
               render={props => (
@@ -106,12 +113,21 @@ class App extends React.Component {
               )}
             />
           </Switch>
-          </BrowserRouter>
+      
       </div>
       )
   }
 }
-export default App;
+
+
+
+const mapStateToProps = (state) => { 
+  return  {
+      actors: state.actors
+  }
+}
+export default connect(mapStateToProps, { fetchActors })(App)
+
 
 // { this.state.isLoggedIn ?  <ActorsContainer  loggedInUser={ this.state.user } handleLogin= {this.handleLogin}  /> : null }
 

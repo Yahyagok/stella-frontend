@@ -33,7 +33,9 @@ let store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)))
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Route  component= {App} />   
+           <Route  component={App} />
+             
+             
         </Router>
      </Provider>
      ,

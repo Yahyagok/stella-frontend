@@ -8,11 +8,13 @@ import LikeInput from '../components/LikeInput'
 
 
 const Actor = (props) => {
-    // console.log(props)
     // debugger
-    let actor = props.actors.find(actor => actor.id ===parseInt(props.match.params.id))
-//   console.log(props.loggedInUser)
+    let actor = props.actors.find(actor => actor.id === props.match.params.id)
+    
+    // console.log(  actor.relationships)
+
     return (
+     
       
         <div>
                 {actor ? null : <Redirect to='/actors'/> }
@@ -21,7 +23,9 @@ const Actor = (props) => {
                 <div>Contact Num: {actor.attributes.contact_info}</div> 
                 <div>Description: {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
-                <LikeInput  />           
+               
+                <LikeInput  />    
+                {actor.relationships.likes.data.length}       
         </div>
 
     )

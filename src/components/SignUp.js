@@ -2,6 +2,7 @@ import React from 'react';
 // import { connect} from 'react-redux'
 // import {addUser} from '../actions/addUser'
 import axios from 'axios'
+import { connect } from 'react-redux';
 
 
 
@@ -92,5 +93,11 @@ class SignUp extends React.Component {
     }
   }
 
+ const mdp = dispatch => {
+    return {
+      signedUp: (id) => dispatch({ type: 'SIGN_UP', payload: id   })
+    }
+  }
 
-export default SignUp
+
+export default connect(null, mdp )(SignUp)
