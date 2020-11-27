@@ -60,7 +60,8 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-      this.props.fetchActors()
+       this.props.fetchActors()
+      
       this.loginStatus()
       const user_id = localStorage.user_id
       if(user_id){
@@ -84,6 +85,7 @@ class App extends React.Component {
 
   render() {
     // console.log("user", this.state.user)
+   console.log(this.props.actors)
     return (
       <div className="App">
            <NavBar  currentUser = {this.state.user}  logout={this.handleLogout}/> 
@@ -91,8 +93,8 @@ class App extends React.Component {
             <Route exact path="/users" render={() => <UsersContainer />}   />
             <Route exact path="/likes" render={() => <LikesContainer />}   />
             <Route exact path="/comments" render={() => <CommentsContainer  />}   />
-            <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} actors={this.props.actors} loggedInUser={this.props.loggedInUser} />}/>
-            <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps} actors={this.props.actors} loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
+            <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} loggedInUser={this.props.loggedInUser} />}/>
+            <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps}  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
          
             <Route 
               exact path='/' 
@@ -126,7 +128,9 @@ const mapStateToProps = (state) => {
       actors: state.actors
   }
 }
-export default connect(mapStateToProps, { fetchActors })(App)
+
+
+export default connect(mapStateToProps, {fetchActors})(App)
 
 
 // { this.state.isLoggedIn ?  <ActorsContainer  loggedInUser={ this.state.user } handleLogin= {this.handleLogin}  /> : null }

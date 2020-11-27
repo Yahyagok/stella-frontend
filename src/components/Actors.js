@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 // import Actor from './Actor'
+import { connect } from 'react-redux'
 const Actors = (props) => {
 //   console.log(props)
+
     return (
         
         <div>
@@ -14,4 +16,11 @@ const Actors = (props) => {
         </div>
     )
 }
-export default Actors
+
+
+const msp = (state) => {
+    return {
+        actors: state.actors.actors
+    }
+}
+export default connect(msp)(Actors)

@@ -16,7 +16,7 @@ class ActorsContainer extends React.Component {
                 <Switch>   
                     <Route exact path='/new' component={ActorInput}/>
             
-                    <Route exact  path='/actors'  render={(routerProps) => <Actors {...routerProps} actors={this.props.actors}/>}/> 
+                    <Route exact  path='/actors'  render={(routerProps) => <Actors {...routerProps} />}/> 
                 
                 </Switch> 
             </div>

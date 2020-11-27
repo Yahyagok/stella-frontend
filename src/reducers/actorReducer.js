@@ -1,11 +1,24 @@
-export default function actorReducer(state = [], action ){
+const initialState = {
+        actors:[],
+        actorId: ''
+}
+
+
+export default function actorReducer(prevState=initialState, action ){
         switch(action.type){
                 case 'FETCH_ACTORS':
-                        return action.payload.data
+                        return {...prevState, actors: action.payload.data }
                 case 'ADD_ACTOR':
-                        return [...state, action.payload.data] 
+                        return [...prevState, action.payload.data] 
+                case 'FIND_ACTOR':
+                     
+                        let id = action.payload
+                        return {...prevState, actorId: id }
+                     
+
+
                 default:
-                        return state                  
+                        return prevState                  
         }
 }
 

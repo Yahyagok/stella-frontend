@@ -2,10 +2,7 @@ import React from 'react'
 import { Redirect} from 'react-router-dom'
 import CommentInput from '../components/CommentInput'
 import LikeInput from '../components/LikeInput'
-// import images from './images'
-
-
-
+import { connect } from 'react-redux'
 
 const Actor = (props) => {
     // debugger
@@ -23,7 +20,7 @@ const Actor = (props) => {
                 <div>Contact Num: {actor.attributes.contact_info}</div> 
                 <div>Description: {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
-               
+                <h2 onClick={() => props.actorId(actor.id)}>Click To see actorId </h2>
                 <LikeInput  />    
                 {actor.relationships.likes.data.length}       
         </div>
@@ -31,4 +28,17 @@ const Actor = (props) => {
     )
 }
 
-export default Actor
+const msp = (state) => {
+    return {
+        actors: state.actors .actors
+    }
+}
+
+
+const mdp = dispatch => {
+    return {     
+        actorId: (id) =>  dispatch({type: 'FIND_ACTOR', payload: id})  
+     }
+}
+
+export default connect(msp, mdp)(Actor)
