@@ -14,20 +14,21 @@ class CommentsContainer extends React.Component {
     }
  
     render () {
+        // console.log(this.props.comments)
         return (
             <div>
                 <Switch>
                     {/* <Route path='/actors/:id' render={(routerProps) => <CommentInput {...routerProps}  />  } /> */}
-                    <Route path='/actors/:id' render={(routerProps) => <Comment {...routerProps} comments={this.props.comments}/>}/>
+                    <Route path='/actors/:id' render={(routerProps) => <Comment {...routerProps} />}/>
                 </Switch>
             </div>
         )
     }
 
 }
-const mapStateToProps = (state) => { 
-    return {
-        comments: state.comments
-    }
-}
-export default connect(mapStateToProps,{fetchComments})(CommentsContainer) 
+// const mapStateToProps = (state) => { 
+//     return {
+//         comments: state.comments
+//     }
+// }
+export default connect(null,{fetchComments})(CommentsContainer) 

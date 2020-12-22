@@ -1,10 +1,51 @@
-export default function commentReducer(state =  [], action ){
+
+const initialState = {
+        comments: [],
+        commentId: ''
+}
+
+
+
+export default function commentReducer(prevState=initialState, action ){
     switch(action.type){
             case 'FETCH_COMMENTS':
-                    return  action.payload.data
+                    return {...prevState, comments: action.payload.data}
             case 'ADD_COMMENT':
-                    return  [...state, action.payload.data] 
+                    return  {...prevState, comments: [...prevState.comments, action.payload.data]}          
+            case 'FIND_UPDATE_COMMENT':
+                    let findUpdateComment = action.payload
+                    return { ...prevState, updateComment: findUpdateComment }
+           case 'UPDATE_COMMENT': 
+                  let commentId =  action.payload.id
+                let newComments = prevState.comments.map(comment => {
+                        if (comment.id === commentId  ) { 
+                               comment = {...action.payload}
+                                return { comment}
+                        }
+                        else { 
+                                return comment
+                        }
+                })
+                   return {...prevState, comments: newComments}
+          case 'DELETE_COMMENT': 
+                let commentDeletedId = action.payload
+                let allComments = prevState.comments.map(comment => {
+                        if (comment.id === commentDeletedId ){ 
+                                comment = {}
+                                return { comment}
+                        }
+                        else { 
+                                return comment
+                        }
+                })
+                return {...prevState, comments: allComments}
+           case 'FIND_COMMENT':   
+                   let id = action.payload
+                   return {...prevState, commentId: id }
             default:
-                    return state              
+                    return prevState             
     }
 }
+
+
+// whatever you do here , you aim to change the state

@@ -7,7 +7,7 @@ export const addActor = (data) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ actor: { name: data.name, image: data.image, contact_info: data.contactInfo, city_id: data.cityId, agency_id: data.agencyId, description: data.description } })
         })
         .then(response => response.json())
         .then(actor => dispatch({ type: 'ADD_ACTOR', payload: actor }))

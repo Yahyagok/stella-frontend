@@ -6,10 +6,10 @@ class UsersContainer extends React.Component {
 
  
     render () {
-
+    
         return (
             <div>
-         
+            
             </div>
         )
     }
@@ -20,4 +20,10 @@ const mapStateToProps = (state) => {
         users: state.users
     }
 }
-export default connect(mapStateToProps,null)(UsersContainer) 
+
+const mdp = dispatch => {
+    return {
+        fetchUsers: () => dispatch({ type: "FETCH_USERS" })
+    }
+}
+export default connect(mapStateToProps,mdp)(UsersContainer) 

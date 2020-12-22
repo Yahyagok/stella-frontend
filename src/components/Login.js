@@ -31,6 +31,8 @@ class Login extends React.Component {
         name: name,
         password: password
       } 
+
+    
       // this.props.login(this.props.handleLogin)
 
       axios.post('http://localhost:3000/login', {user}, {withCredentials: true})
@@ -102,6 +104,14 @@ class Login extends React.Component {
       );
     }
   }
+  // const mdp = dispatch => {
+  //   return {
+  //     getUser: (id) => dispatch({ type: 'LOGIN_USER', payload: id })
+  //   }
+  // }
+
+
+
 export default Login
 
 

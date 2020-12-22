@@ -7,10 +7,13 @@ export const addComment = (data) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify( data)
         })
         .then(response => response.json())
-        .then(comment => dispatch({ type: 'ADD_COMMENT', payload: comment }))
+        .then(comment => dispatch({ type: 'ADD_COMMENT', payload: comment} ))
     }
     
 }
+
+
+// this is the way how you get info as payloan and in reducer you added to state 

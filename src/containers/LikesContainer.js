@@ -5,15 +5,11 @@ import { connect } from 'react-redux'
 import { fetchLikes } from '../actions/fetchLikes'
 import { Route, Switch} from 'react-router-dom'
 
-
-
-
 class LikesContainer extends React.Component {
 
      componentDidMount =() =>{
          this.props.fetchLikes()
     }
- 
     render () {
         return (
             <div>

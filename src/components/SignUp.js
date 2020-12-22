@@ -32,8 +32,6 @@ class SignUp extends React.Component {
 
        axios.post('http://localhost:3000/api/v1/users', {user}, {withCredentials: true})
       .then(response => {
-      
-         
         if (response.data.status === 'created') {
           this.props.handleLogin(response.data)
           this.redirect()
@@ -95,7 +93,7 @@ class SignUp extends React.Component {
 
  const mdp = dispatch => {
     return {
-      signedUp: (id) => dispatch({ type: 'SIGN_UP', payload: id   })
+      signUp: (id) => dispatch({ type: 'SIGN_UP', payload: id   })
     }
   }
 

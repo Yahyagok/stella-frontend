@@ -1,13 +1,33 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {fetchLikes} from '../actions/fetchLikes'
 
-const Like= (props) => {
- 
 
-    return (   
-        <div>
-            Likes: {props.likes && props.likes.length}
-        </div>
-    )
+
+
+class  Like  extends React.Component{
+
+    componentDidMount ()  {
+          this.props.fetchLikes() 
+    }
+
+    render(){
+        let like = this.props.likes && this.props.likes.filter(like => like.attributes.actor.id === parseInt(this.props.actorId)) 
+        return (  
+            <div>
+                Likes: { like.length}
+            </div>
+        )
+    }
+    }
+
+const msp = (state) => {
+    return {
+        likes: state.likes, 
+        actorId: state.actors.actorId
+    }
 }
-export default Like
+export default connect(msp, {fetchLikes})(Like)
+
+

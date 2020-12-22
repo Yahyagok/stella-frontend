@@ -1,9 +1,9 @@
+
+
+
 const initialState = {
-        actros: [], 
-        likes: [],
-        comments: [],
         users: [],
-        user: ''
+        userId: ''
 }
 
 
@@ -11,24 +11,17 @@ const initialState = {
 export default function userReducer(prevState=initialState , action ){
     switch(action.type){
             case 'FETCH_USERS':
-                    return action.payload.data
+                    return {...prevState, users: action.payload.data}
             case 'ADD_USER':
                     return [...prevState, action.payload.data] 
-            case 'SIGNUP_USER':
-                    let userId = action.payload.id
+            case 'GET_USER':
+                    let userId = action.payload
                   
-                    let newUsers = prevState.users.map(
-                            user => {
-                                    if (user.id === userId){
-                                     prevState.user =  user }
-                                    return user 
-                            }
-                    )
-                    return  { ...prevState,  users: newUsers,  user: action.payload.data}     
+                    return  { ...prevState,  userId: userId}     
            case 'FIND_USER':
                    return { ...prevState, user: action.payload.data}
            case 'LOGIN_USER':
-                   return [...prevState, action.payload.data]
+                   return {...prevState, user: action.payload}
            default:
                     return prevState                  
     }

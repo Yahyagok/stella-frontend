@@ -1,74 +1,46 @@
 import React from 'react';
 import { connect} from 'react-redux'
-// import {addLike} from '../actions/addLike'
+import {addLike} from '../actions/addLike'
 // import {signUpUser} from '../actions/signUpUser'
-
-
+import Like from '../components/Like'
 
 class LikeInput extends React.Component {
     
     state = {
         userId: '' ,
-        actorId: ''  
+        actorId: ''
     }
 
-  
-
-
-   
-    handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value }) 
-    }
-    handleClick = (event) => {
-      
-        this.props.addLike(this.state)
-
+    handleClick = () => { 
+       let data = { 
+            userId: parseInt(this.props.userId),
+            actorId: parseInt(this.props.actorId)
+        }
+        this.props.addLike(data)
         this.setState({ 
             actorId: '',
-            userId: ''
-
-         })
-       
-        
-
+            userId:  ''
+         })   
     }
     render(){  
-     
+ 
         return (
             <div>
                 <form >
-                    <label>Actor ID:</label>
-                    <input type="number" placeholder='actor id'value= {this.state.actorId} name="actorId" onChange={this.handleChange}/><br />
-                    <label>User ID:</label>
-                    <input type="number" placeholder='user id'value= {this.state.userId} name="userId" onChange={this.handleChange}/><br />
                     <span role="img" aria-label="heart" onClick={this.handleClick}>❤️</span>  
                 </form>
+                <Like actor={this.props.actor} /> 
               
             </div>
         )
     }
-
-  
-
-          
-
-
-
-
 }
-
 const  msp = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        actorId: state.actors.actorId,
+        userId: state.users.userId
     }
 }
 
-
-const  mdp =(dispatch) => {
-
-    return {
-        addLike: (data) => { dispatch({ type: 'ADD_LIKE', payload: data})}
-    }
-   
-}
-export default connect(msp, mdp)(LikeInput)
+export default connect(msp, {addLike})(LikeInput)

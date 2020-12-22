@@ -5,18 +5,14 @@ const initialState = {
 
 
 export default function actorReducer(prevState=initialState, action ){
-        switch(action.type){
-                case 'FETCH_ACTORS':
-                        return {...prevState, actors: action.payload.data }
+        switch(action.type){  
+                case 'FETCH_ACTORS': 
+                        return  {...prevState, actors: action.payload.data}         
                 case 'ADD_ACTOR':
-                        return [...prevState, action.payload.data] 
-                case 'FIND_ACTOR':
-                     
+                        return {...prevState, actors: [...prevState.actors, action.payload.data ]}
+                case 'FIND_ACTOR':   
                         let id = action.payload
                         return {...prevState, actorId: id }
-                     
-
-
                 default:
                         return prevState                  
         }

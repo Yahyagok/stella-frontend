@@ -3,16 +3,16 @@ import { Redirect} from 'react-router-dom'
 import CommentInput from '../components/CommentInput'
 import LikeInput from '../components/LikeInput'
 import { connect } from 'react-redux'
+// import Comment from '../components/Comment'
+import CommentsContainer from '../containers/CommentsContainer'
 
 const Actor = (props) => {
     // debugger
     let actor = props.actors.find(actor => actor.id === props.match.params.id)
     
-    // console.log(  actor.relationships)
+    // console.log(  props.comments)
 
-    return (
-     
-      
+    return (  
         <div>
                 {actor ? null : <Redirect to='/actors'/> }
                 <div><img src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} /></div>
@@ -20,25 +20,20 @@ const Actor = (props) => {
                 <div>Contact Num: {actor.attributes.contact_info}</div> 
                 <div>Description: {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
-                <h2 onClick={() => props.actorId(actor.id)}>Click To see actorId </h2>
-                <LikeInput  />    
-                {actor.relationships.likes.data.length}       
+                <CommentsContainer /> 
+                {/* <Comment />  */}        
+                <LikeInput actor={actor}  />      
         </div>
-
     )
 }
-
 const msp = (state) => {
     return {
-        actors: state.actors .actors
+        actors: state.actors.actors
     }
 }
-
-
-const mdp = dispatch => {
-    return {     
-        actorId: (id) =>  dispatch({type: 'FIND_ACTOR', payload: id})  
-     }
-}
-
-export default connect(msp, mdp)(Actor)
+// const mdp = dispatch => {
+//     return {     
+//         actorId: (id) =>  dispatch({type: 'FIND_ACTOR', payload: id})  
+//      }
+// }
+export default connect(msp)(Actor)
