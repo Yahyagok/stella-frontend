@@ -1,7 +1,6 @@
 
 
 
-
 export default function likeReducer(state= [], action ){
     switch(action.type){
             case 'FETCH_LIKES':

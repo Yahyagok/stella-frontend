@@ -27,7 +27,7 @@ class UpdateComment extends  React.Component {
             <div>
              <label>Update Your Comment:</label>
               <input type="text" placeholder='Update Comment' name="updatedReview" value= {this.state.updatedReview} onChange={this.handleChange}/><br/>
-              <input type="submit" onClick={this.handleSubmit} /> 
+              <input type="submit" variant="primary"  onClick={this.handleSubmit} /> 
             </div> 
             )
         }

@@ -5,30 +5,41 @@ import LikeInput from '../components/LikeInput'
 import { connect } from 'react-redux'
 // import Comment from '../components/Comment'
 import CommentsContainer from '../containers/CommentsContainer'
+import {  Container, Row, Col } from "react-bootstrap"
+import Image from 'react-bootstrap/Image'
+// import {SideBy} from '../styled'
+
 
 const Actor = (props) => {
-    // debugger
     let actor = props.actors.find(actor => actor.id === props.match.params.id)
-    
-    // console.log(  props.comments)
-
+ 
     return (  
+     
         <div>
+                <Container>
+                     <Row>
+                     <Col xs={6} md={4} flex-row>
                 {actor ? null : <Redirect to='/actors'/> }
-                <div><img src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} /></div>
+     {/* {actor.attributes.image && <div><Image src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} roundedCircle  /></div>  }  */}
+                             <div><Image src={actor.attributes.image_url} alt={actor.attributes.name}   roundedCircle   width={150} height={200} mode='fit'  /> </div>
+                            
+                </Col>
+                    </Row>
+                </Container> 
                 <div> Name: {actor.attributes.name}</div> 
                 <div>Contact Num: {actor.attributes.contact_info}</div> 
-                <div>Description: {actor.attributes.description}</div>
+                <div>Description:  {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
                 <CommentsContainer /> 
                 {/* <Comment />  */}        
-                <LikeInput actor={actor}  />      
+                <LikeInput actor={actor}  />            
         </div>
     )
 }
 const msp = (state) => {
     return {
-        actors: state.actors.actors
+        actors: state.actors.actors,
+        userId: state.users.userId
     }
 }
 // const mdp = dispatch => {
@@ -37,3 +48,5 @@ const msp = (state) => {
 //      }
 // }
 export default connect(msp)(Actor)
+
+

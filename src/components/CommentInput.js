@@ -12,20 +12,22 @@ class CommentInput extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-    let  data = {
+    let data = {
         review: this.state.review,
         actor_id: this.props.actorId,
         user_id: this.props.userId
         }
-        this.props.addComment(data)
+       this.props.userId ?  this.props.addComment(data) : alert("If you like to give comment, you need to signin or login !!")
         this.setState({ 
             review: '',
             actor_id: '',
             user_id: ''
          })
+        
     }
 
-    render(){     
+    render(){   
+ 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

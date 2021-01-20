@@ -1,16 +1,10 @@
 import React from 'react';
 import Actors from '../components/Actors';
-import ActorInput from '../components/ActorInput'
-
-
+// import ActorInput from '../components/ActorInput'
 import { Route, Switch} from 'react-router-dom'
 
-
-
 class ActorsContainer extends React.Component {
-
-    render(){
-       
+    render(){   
         return (
             <div>
                 <Switch>   

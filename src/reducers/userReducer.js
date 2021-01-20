@@ -1,13 +1,8 @@
-
-
-
 const initialState = {
         users: [],
+        user: {},
         userId: ''
 }
-
-
-
 export default function userReducer(prevState=initialState , action ){
     switch(action.type){
             case 'FETCH_USERS':
@@ -15,13 +10,13 @@ export default function userReducer(prevState=initialState , action ){
             case 'ADD_USER':
                     return [...prevState, action.payload.data] 
             case 'GET_USER':
-                    let userId = action.payload
-                  
-                    return  { ...prevState,  userId: userId}     
+                    let id = action.payload
+                    return  { ...prevState,  userId: id}     
            case 'FIND_USER':
                    return { ...prevState, user: action.payload.data}
-           case 'LOGIN_USER':
-                   return {...prevState, user: action.payload}
+           case 'GET_LOGIN_SIGNUP_USER':   
+                   let user = action.payload
+                   return {...prevState, user: user}
            default:
                     return prevState                  
     }

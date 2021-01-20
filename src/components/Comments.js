@@ -4,7 +4,6 @@ import {connect} from 'react'
 
 
 const Comments = (props) => {
-   console.log(props.commentId)
     return (   
         <div>
             {props.comments&& props.comments.map(comment =>

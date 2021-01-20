@@ -13,7 +13,7 @@ class  Like  extends React.Component{
     }
 
     render(){
-        let like = this.props.likes && this.props.likes.filter(like => like.attributes.actor.id === parseInt(this.props.actorId)) 
+        let like = this.props.likes && this.props.likes.filter(like => like.attributes.actor &&  like.attributes.actor.id === parseInt(this.props.actorId)) 
         return (  
             <div>
                 Likes: { like.length}

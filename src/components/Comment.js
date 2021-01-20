@@ -3,27 +3,20 @@ import {Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import FindUpdateComment from '../components/FindUpdateComment'
 // import UpdateComment from '../components/UpdateComment'
-import { Route} from 'react-router-dom'
+// import { Route} from 'react-router-dom'
 
 class Comment extends React.Component {
-
     state = { 
         review: ''
     }
-
     data = { 
         actorId: this.props.actorId,
         userId: this.props.userId,
         review: this.state.review
     }
-
-
     handleChange = (event) => {
         this.setState ({ [event.target.name]: event.target.value })
       }
-
- 
-
 //  updateAComment = (eachComment) => {
 //     // console.log(eachComment)
   
@@ -35,13 +28,12 @@ class Comment extends React.Component {
 //         console.log(findedComment)
 //     }
    multipleOnClickForUpdateButton = (data, eachComment) => (
-    
       <div> 
         {/* <div>  {this.updateAComment(eachComment)}  </div>  */}
       <div>  {this.props.findComment(eachComment.attributes.review) } </div>  
         <form>
                    <label>update Comment</label>
-                   <input type="text"  placeholder='update' name="name" onChange={this.handleChange} value={this.state.review} ></input>       
+                   <input type="text" variant="primary" placeholder='update' name="name" onChange={this.handleChange} value={this.state.review} ></input>       
         </form>
         <div> {this.props.updateComment(data, eachComment.id)} </div>
       </div>       
@@ -54,8 +46,7 @@ class Comment extends React.Component {
        }  
   }  
   render (){
-    let comments = this.props.comments.filter(comment => comment.attributes.actor.id == this.props.match.params.id)
-    // console.log(this.props.commentId)
+    let comments = this.props.comments.filter(comment => comment.attributes.actor && comment.attributes.actor.id == this.props.match.params.id)
       return ( 
            <div> 
               <div>{this.props.comments ? null : <Redirect to='/actors'/>}</div> 
@@ -78,15 +69,13 @@ const msp = (state) => {
         commentId: state.comments.commentId 
       }
 }
-
 const mdp = dispatch => {
     return {
         findComment: (editReview) => dispatch({ type: 'FIND_UPDATE_COMMENT', payload: editReview  }), 
-        updateComment: (data, commentId ) => dispatch({ type: 'UPDATE_COMMENT', payload: data, commentId }),
+        updateComment: (data, commentId ) => dispatch({ type: 'UPDATE_COMMENT', payload: data, commentId })
       
     }
 }
-
 export default connect(msp, mdp)(Comment)
 
 

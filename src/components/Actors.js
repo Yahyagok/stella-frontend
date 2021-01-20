@@ -1,57 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import Actor from './Actor'
 import { connect } from 'react-redux'
 import SearchBar from '../components/SearchBar'
-
-
+import {  Container, Row, Col } from "react-bootstrap"
+import Image from 'react-bootstrap/Image'
 class Actors extends  React.Component {
 
     state = {
         search: ''
     }
-
     handleSearch =(event) => {
         this.setState({ search: event.target.value})
     }
-
-
     render(){
-    
             let allActors = this.props.actors
             let filteredActors =  allActors.filter( actor => actor.attributes.name.toLowerCase().includes(this.state.search.toLowerCase() ))
+            console.log(this.props.actors)
             return (
-                
-                 <div>
+      
+                 <div >
                       {filteredActors && filteredActors.map(actor => 
-                    <li key={actor.id} onClick={() => this.props.getUser(this.props.loggedInUser.id)} >
-                        <div><img src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} /></div> 
-                    <Link onClick={() => this.props.actorId(parseInt(actor.id))} to={`/actors/${actor.id}`}>{actor.attributes.name}</Link>
-                    </li>
+                     
+                               <Container  >
+                            <Row  >
+                 
+                               <Col xs={6} md={4}    >
+                                  <div   key={actor.id} onClick={() => this.props.getUser(this.props.userId)} >
+                                     {/* <div  ><Image src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name}  roundedCircle   width={150} height={200} mode='fit' /></div> */}
+                                     <Image src={actor.attributes.image_url} alt={actor.attributes.name} roundedCircle   width={150} height={200} mode='fit'/>
+                                      <Link onClick={() => this.props.actorId(parseInt(actor.id))} to={`/actors/${actor.id}`}>{actor.attributes.name}</Link>
+                                   </div>
+                               </Col>
+                              </Row>
+                        </Container>
                     )}
                     <SearchBar  search={this.state.search} handleSearchChange={this.handleSearch} />
                 </div>
+              
             )
       }
-
     }
-
-
 const msp = (state) => {
     return {
-        actors: state.actors.actors
+        actors: state.actors.actors, 
+        userId: state.users.userId
     }
 }
-
-
 const mdp = dispatch => {
     return {     
         actorId: (id) =>  dispatch({type: 'FIND_ACTOR', payload: id}),
         getUser: (id) => dispatch({ type: "GET_USER", payload: id})
      }
 }
-
 export default connect(msp, mdp)(Actors)
 
-{/* <div><img src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} /></div> */}
-//<img src={require('./logo.jpeg')} />

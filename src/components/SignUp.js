@@ -3,18 +3,14 @@ import React from 'react';
 // import {addUser} from '../actions/addUser'
 import axios from 'axios'
 import { connect } from 'react-redux';
-
-
-
+import {Form, Button } from 'react-bootstrap'
 
 class SignUp extends React.Component {
-   
- 
+  
         state = { 
         name: '',
         password: '',
         errors: ''
-       
     }
   handleChange = (event) => {
       const {name, value} = event.target
@@ -32,8 +28,11 @@ class SignUp extends React.Component {
 
        axios.post('http://localhost:3000/api/v1/users', {user}, {withCredentials: true})
       .then(response => {
+        console.log(response)
         if (response.data.status === 'created') {
           this.props.handleLogin(response.data)
+          this.props.getUser(parseInt(response.data.user.data.id))
+           this.props.getSignUpUser(response.data.user.data)
           this.redirect()
         } else {
           this.setState({
@@ -56,30 +55,32 @@ class SignUp extends React.Component {
       )
     }
   render() {
+    console.log(this.props.userId)
       const {name, password} = this.state
   return (
         <div>
-          <h1>Sign Up</h1>
           <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="name"
+          <Form.Group controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+            <Form.Control
               type="text"
               name="name"
               value={name}
               onChange={this.handleChange}
             />
-        
-            <input 
-              placeholder="password"
+              </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control  
               type="password"
               name="password"
               value={password}
               onChange={this.handleChange}
             />
-            <button placeholder="submit" type="submit">
+            </Form.Group>
+            <Button variant="primary"placeholder="submit" type="submit">
               Sign Up
-            </button>
-        
+            </Button>
           </form>
           <div>
             {
@@ -91,11 +92,28 @@ class SignUp extends React.Component {
     }
   }
 
+  const msp = state => { 
+    return { 
+      userId: state.users.userId,
+      user: state.users.user
+    }
+  }
+
  const mdp = dispatch => {
     return {
-      signUp: (id) => dispatch({ type: 'SIGN_UP', payload: id   })
+      getUser: (id) => dispatch({ type: 'GET_USER', payload: id   }),
+      getSignUpUser: (user) => dispatch({ type: 'GET_LOGIN_SIGNUP_USER', payload: user}),
+  
     }
   }
 
 
-export default connect(null, mdp )(SignUp)
+export default connect(msp, mdp)(SignUp)
+
+
+// getUserInfo: (id) =>dispatch({ type: 'GET_USER_INFO', payload: id})
+
+
+
+
+

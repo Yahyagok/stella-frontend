@@ -16,7 +16,7 @@ class LikeInput extends React.Component {
             userId: parseInt(this.props.userId),
             actorId: parseInt(this.props.actorId)
         }
-        this.props.addLike(data)
+      this.props.userId ? this.props.addLike(data) : alert("If you would like to like,You need to signin or login !!"); 
         this.setState({ 
             actorId: '',
             userId:  ''

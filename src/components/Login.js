@@ -1,20 +1,16 @@
 import React from 'react';
-// import { connect} from 'react-redux';
+import { connect} from 'react-redux';
 //  import {findUser} from '../actions/findUser';
  import {Link} from 'react-router-dom';
  import axios from 'axios';
 //  import  { loginUser }  from '../actions/loginUser'
-
-
-
+import { Button, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
 class Login extends React.Component {
-
         state = { 
         name: '',
         password: '',
         errors: ''
        };
-    
     componentDidMount() {
       return this.props.loggedInStatus ? this.redirect() : null
     }
@@ -31,14 +27,12 @@ class Login extends React.Component {
         name: name,
         password: password
       } 
-
-    
-      // this.props.login(this.props.handleLogin)
-
       axios.post('http://localhost:3000/login', {user}, {withCredentials: true})
       .then(response => {
         if (response.data.logged_in) {
           this.props.handleLogin(response.data)
+          this.props.getUser(response.data.user.id)
+          this.props.getLoginUser(response.data.user)
           this.redirect()
         } else {
           this.setState({
@@ -50,7 +44,6 @@ class Login extends React.Component {
     };
   redirect = () => {
       this.props.history.push('/actors')
-     
     }
   handleErrors = () => {
       return (
@@ -65,31 +58,27 @@ class Login extends React.Component {
       )
     }
   render() {
-    // console.log(this.props)
       const {name,  password} = this.state
   return (
-
         <div>
-          <h1>Log In</h1>
           <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="name"
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-         
-            <input
-              placeholder="password"
+          <FormGroup controlId="formBasicName">
+          <FormLabel>Name</FormLabel>
+          <FormControl type="text"  name="name"  value={name}
+              onChange={this.handleChange} />
+             </FormGroup>
+             <FormGroup controlId="formBasicPassword">
+             <FormLabel>Password</FormLabel>
+            <FormControl
               type="password"
               name="password"
               value={password}
               onChange={this.handleChange}
             />
-            <button placeholder="submit" type="submit">
+             </FormGroup>
+            <Button variant="primary"  placeholder="submit" type="submit">
               Log In
-            </button>
+            </Button>
             <div>
               or <Link to='/signup'>sign up</Link>
             </div>
@@ -104,15 +93,19 @@ class Login extends React.Component {
       );
     }
   }
-  // const mdp = dispatch => {
-  //   return {
-  //     getUser: (id) => dispatch({ type: 'LOGIN_USER', payload: id })
-  //   }
-  // }
-
-
-
-export default Login
+  const msp = state => { 
+    return {
+      userId: state.users.userId, 
+      user: state.users.user
+    }
+  }
+  const mdp = dispatch => {
+    return {
+      getUser: (id) => dispatch({ type: 'GET_USER', payload: id }),
+      getLoginUser: (user) => dispatch({ type: 'GET_LOGIN_SIGNUP_USER', payload: user})
+    }
+  }
+export default connect(msp, mdp)(Login)
 
 
 
@@ -121,3 +114,5 @@ export default Login
 //     <Redirect to="/actors" />
 //   }
 // }
+
+

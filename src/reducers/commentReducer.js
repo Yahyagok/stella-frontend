@@ -1,11 +1,7 @@
-
 const initialState = {
         comments: [],
         commentId: ''
 }
-
-
-
 export default function commentReducer(prevState=initialState, action ){
     switch(action.type){
             case 'FETCH_COMMENTS':
@@ -28,17 +24,11 @@ export default function commentReducer(prevState=initialState, action ){
                 })
                    return {...prevState, comments: newComments}
           case 'DELETE_COMMENT': 
-                let commentDeletedId = action.payload
-                let allComments = prevState.comments.map(comment => {
-                        if (comment.id === commentDeletedId ){ 
-                                comment = {}
-                                return { comment}
-                        }
-                        else { 
-                                return comment
-                        }
-                })
-                return {...prevState, comments: allComments}
+                let commentDeletedId = action.payload  
+                return { 
+                        ...prevState, comments: prevState.comments.filter( (comment) => comment.id !==  commentDeletedId)  
+                }
+               
            case 'FIND_COMMENT':   
                    let id = action.payload
                    return {...prevState, commentId: id }

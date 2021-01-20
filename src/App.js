@@ -15,17 +15,13 @@ import { fetchUsers } from './actions/fetchUsers'
 import { connect} from 'react-redux';
 import Actor from './components/Actor';
 import UpdateComment from './components/UpdateComment'
+import DeleteComment from './components/DeleteComment'
 import ActorInput from './components/ActorInput'
-
-
 class App extends React.Component {
-
     state = { 
         isLoggedIn: false,
         user: {}
        };
-    
-
   loginStatus = () => {
       axios.get('http://localhost:3000/logged_in', {withCredentials: true})
       .then(response => {
@@ -56,12 +52,9 @@ class App extends React.Component {
         this.props.history.push('/login')
       })
     }
-
     componentDidMount() {
        this.props.fetchActors()
        this.props.fetchUsers()
-    
-      
       this.loginStatus()
       const user_id = localStorage.user_id
       if(user_id){
@@ -80,26 +73,19 @@ class App extends React.Component {
         })
       }
     }
-
-
-
   render() {
-    // console.log("user", this.state.user)
-    // console.log(this.props.users)
     return (
-      <div className="App">
-         
-           <NavBar  currentUser = {this.state.user}  logout={this.handleLogout}/> 
+      <div className="App">  
+           <NavBar  currentUser = {this.state.user }  logout={this.handleLogout}/> 
             <Switch> 
             <Route exact path="/users" render={() => <UsersContainer />}   />
             <Route exact path="/likes" render={() => <LikesContainer />}   />
             {/* <Route exact path="/comments" render={() => <CommentsContainer  />}   /> */}
             <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} loggedInUser={this.props.loggedInUser} />}/>
             <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps}  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
-            <Route path='/updatecomment/:id' render={(routerProps ) => <UpdateComment {...routerProps} />}/>  
+            <Route path='/updatecomment/:id' render={(routerProps ) => <UpdateComment {...routerProps} />}/> 
+            <Route path='/deletecomment/:id' render={(routerProps ) => <DeleteComment {...routerProps} />}/>   
             <Route exact  path="/new" render={(routerProps) => <ActorInput {...routerProps}  />}   />
-
-         
             <Route 
               exact path='/' 
               render={props => (
@@ -124,9 +110,6 @@ class App extends React.Component {
       )
   }
 }
-
-
-
 const mapStateToProps = (state) => { 
   return  {
       actors: state.actors, 
@@ -134,19 +117,12 @@ const mapStateToProps = (state) => {
 
   }
 }
-
 // const mdp = dispatch => {
 //   return {
-
 //     fetchUsers: () => dispatch( { type: 'FETCH_USERS'})
 //   }
 // }
-
-
 export default connect(mapStateToProps, {fetchActors, fetchUsers})(App)
-
-
 // { this.state.isLoggedIn ?  <ActorsContainer  loggedInUser={ this.state.user } handleLogin= {this.handleLogin}  /> : null }
-
 // second argument of connect can be mapDispatchToProps or action function itself
 //if we use action function itself , we need to import thta file   
