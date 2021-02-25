@@ -13,6 +13,9 @@ export default function actorReducer(prevState=initialState, action ){
                 case 'FIND_ACTOR':   
                         let id = action.payload
                         return {...prevState, actorId: id }
+                case 'DELETE_ACTOR':
+                        let actorDeleteId = action.payload 
+                        return { ...prevState, actors: prevState.actors.filter((actor) => actor.id !== actorDeleteId)  }
                 default:
                         return prevState                  
         }
