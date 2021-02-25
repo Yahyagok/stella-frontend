@@ -18,16 +18,11 @@ class DeleteComment extends React.Component{
             </div>
         )
     }
-
-
 }
-
-
 const msp = state => { 
     return { 
         commentId: state.comments.commentId,
         actorId: state.actors.actorId
     }
 }
-
 export default connect(msp, {deleteComment})(DeleteComment)
