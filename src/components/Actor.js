@@ -12,17 +12,14 @@ import Image from 'react-bootstrap/Image'
 
 const Actor = (props) => {
     let actor = props.actors.find(actor => actor.id === props.match.params.id)
- 
-    return (  
-     
+    return (     
         <div>
                 <Container>
                      <Row>
                      <Col xs={6} md={4} flex-row>
                 {actor ? null : <Redirect to='/actors'/> }
      {/* {actor.attributes.image && <div><Image src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} roundedCircle  /></div>  }  */}
-                             <div><Image src={actor.attributes.image_url} alt={actor.attributes.name}   roundedCircle   width={150} height={200} mode='fit'  /> </div>
-                            
+                             <div><Image src={actor.attributes.image_url} alt={actor.attributes.name}   roundedCircle   width={150} height={200} mode='fit'  /> </div>                    
                 </Col>
                     </Row>
                 </Container> 
@@ -32,7 +29,8 @@ const Actor = (props) => {
                 <CommentInput loggedInUser={props.loggedInUser}/>
                 <CommentsContainer /> 
                 {/* <Comment />  */}        
-                <LikeInput actor={actor}  />            
+                <LikeInput actor={actor}  />   
+                      
         </div>
     )
 }

@@ -7,7 +7,6 @@ import { Button, FormGroup, FormLabel, FormControl,  } from 'react-bootstrap'
 
 
 class ActorInput extends React.Component {
-
     state = {
         name: '', 
         imageUrl: '',
@@ -21,7 +20,6 @@ class ActorInput extends React.Component {
         this.setState({ [event.target.name]: event.target.value })    
     }
 
- 
     handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData();
@@ -36,7 +34,6 @@ class ActorInput extends React.Component {
           console.log(key, value);
          }
        
-      
         this.props.addActor(formData)
         this.setState({ 
             name: '', 
