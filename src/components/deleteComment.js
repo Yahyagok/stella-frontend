@@ -3,12 +3,10 @@ import { connect} from 'react-redux'
 import {deleteComment} from '../actions/deleteComment'
 
 class DeleteComment extends React.Component{ 
-
     handleSubmit = () => { 
         this.props.deleteComment(this.props.commentId)
         this.props.history.push(`/actors/${this.props.actorId}`)
     }
-
     render(){ 
         return (
             <div>
