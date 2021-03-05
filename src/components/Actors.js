@@ -5,11 +5,11 @@ import SearchBar from '../components/SearchBar'
 import {  Container, Row, Col } from "react-bootstrap"
 import Image from 'react-bootstrap/Image'
 import ButtonForFavorite from '../components/ButtonForFavorite'
+
 class Actors extends  React.Component {
 
     state = {
-        search: ''
-        
+        search: '' 
     }
 
     handleSearch =(event) => {
@@ -30,6 +30,11 @@ class Actors extends  React.Component {
                                      <Image src={actor.attributes.image_url} alt={actor.attributes.name} roundedCircle   width={150} height={200} mode='fit'/>
                                       <Link onClick={() => this.props.actorId(parseInt(actor.id))} to={`/actors/${actor.id}`}>{actor.attributes.name}</Link>
                                       <ButtonForFavorite   /> 
+                                     
+                                                  
+                                               
+                             
+                        
                                    </div>
                                </Col>
                               </Row>             

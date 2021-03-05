@@ -7,12 +7,20 @@ import { connect } from 'react-redux'
 import CommentsContainer from '../containers/CommentsContainer'
 import {  Container, Row, Col } from "react-bootstrap"
 import Image from 'react-bootstrap/Image'
+
 // import {SideBy} from '../styled'
 
 
 const Actor = (props) => {
     let actor = props.actors.find(actor => actor.id === props.match.params.id)
-    return (     
+
+
+
+        //    
+        
+        console.log(actor.id, props.actorId )  
+    return (   
+   
         <div>
                 <Container>
                      <Row>
@@ -28,6 +36,7 @@ const Actor = (props) => {
                 <div>Description:  {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
                 <CommentsContainer /> 
+   
                 {/* <Comment />  */}        
                 <LikeInput actor={actor}  />   
                       
@@ -36,6 +45,7 @@ const Actor = (props) => {
 }
 const msp = (state) => {
     return {
+        actorId: state.actors.actorId,
         actors: state.actors.actors,
         userId: state.users.userId
     }

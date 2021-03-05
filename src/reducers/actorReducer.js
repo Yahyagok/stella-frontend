@@ -13,9 +13,6 @@ export default function actorReducer(prevState=initialState, action ){
                 case 'FIND_ACTOR':   
                         let id = action.payload
                         return {...prevState, actorId: id }
-                case 'DELETE_ACTOR':
-                        let actorDeleteId = action.payload 
-                        return { ...prevState, actors: prevState.actors.filter((actor) => actor.id !== actorDeleteId)  }
                 default:
                         return prevState                  
         }
@@ -24,9 +21,7 @@ export default function actorReducer(prevState=initialState, action ){
 
 // what is a reducer really 
 // you define action type and , it takes prev state, and action , it will update the reducer 
-
-// state mostly is it gonna be object , 
+// state mostly is it gonna be object, 
 // I really think that , it is best way to make an object, 
 // dispatch(actionObj) , automatically passed prev state as the first argument 
 // personally i belive state would be object 
-// 

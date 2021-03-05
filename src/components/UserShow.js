@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import {  Navbar, NavLink, Nav } from "react-bootstrap"
 // import { fetchActors} from '../actions/fetchActors'
 class UserShow extends React.Component {
+       onChange = () => { 
+
+          }
    render(){
        return (
            <div>
@@ -17,7 +20,7 @@ class UserShow extends React.Component {
                         <NavLink ><Link to="/signup"><button>Signup </button> </Link></NavLink> 
                         <NavLink ><Link to="/actors"><button>Actors </button> </Link>    </NavLink> 
                         <NavLink ><Link to="/new"><button>Create An Actor </button> </Link> </NavLink> 
-                     {this.props.user.name && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{this.props.user.name  ? this.props.user.name   :  "🤵"}</span></button></NavLink>  }
+                     {this.props.user.name && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{this.props.user.name  ? this.props.user.name : "🤵"}</span></button></NavLink>  }
                     { this.props.user.attributes && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{ this.props.user.attributes.name  ? this.props.user.attributes.name   :  "🤵"}</span></button></NavLink>      } 
                         </Nav>
                     </Navbar.Collapse>
@@ -32,8 +35,13 @@ const msp = state => {
         user: state.users.user,
         userId: state.users.userId
     }
+
 }
+
+
 export default connect(msp)(UserShow)
+
+
 // burdaki id yi alip , msp yi userinput ta kullnamak 
 //thaht is it 
 // onClick={() => {props.getUser(props.currentUser.id)}}
