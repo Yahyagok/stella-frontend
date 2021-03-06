@@ -4,12 +4,19 @@ import { connect } from 'react-redux'
 // import {Button} from '../styled'
 import {  Navbar, NavLink, Nav } from "react-bootstrap"
 // import { fetchActors} from '../actions/fetchActors'
+import UpdateAccount from '../components/UpdateAccount'
 class UserShow extends React.Component {
-       onChange = () => { 
-
-          }
+     updateAccount = () => {
+      return  <UpdateAccount/>
+   }
+  
    render(){
+  
+
+          
+   
        return (
+      
            <div>
                     <Navbar bg="light" expand="lg">
                     <Navbar.Brand >Stella <span role='img' aria-label="tv">📺</span></Navbar.Brand>
@@ -22,6 +29,7 @@ class UserShow extends React.Component {
                         <NavLink ><Link to="/new"><button>Create An Actor </button> </Link> </NavLink> 
                      {this.props.user.name && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{this.props.user.name  ? this.props.user.name : "🤵"}</span></button></NavLink>  }
                     { this.props.user.attributes && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{ this.props.user.attributes.name  ? this.props.user.attributes.name   :  "🤵"}</span></button></NavLink>      } 
+                   { this.props.user ?  <button onClick={this.updateAccount}>Update your profile</button> : null  } 
                         </Nav>
                     </Navbar.Collapse>
                     </Navbar>
