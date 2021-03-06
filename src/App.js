@@ -17,6 +17,8 @@ import Actor from './components/Actor';
 import UpdateComment from './components/UpdateComment'
 import DeleteComment from './components/DeleteComment'
 import ActorInput from './components/ActorInput'
+import UpdateAccount from './components/UpdateAccount'
+
 class App extends React.Component {
     state = { 
         isLoggedIn: false,
@@ -86,6 +88,7 @@ class App extends React.Component {
             <Route path='/updatecomment/:id' render={(routerProps ) => <UpdateComment {...routerProps} />}/> 
             <Route path='/deletecomment/:id' render={(routerProps ) => <DeleteComment {...routerProps} />}/>   
             <Route exact  path="/new" render={(routerProps) => <ActorInput {...routerProps}  />}   />
+            <Route path="/updateaccount" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
             <Route 
               exact path='/' 
               render={props => (

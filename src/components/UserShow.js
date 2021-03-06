@@ -5,18 +5,14 @@ import { connect } from 'react-redux'
 import {  Navbar, NavLink, Nav } from "react-bootstrap"
 // import { fetchActors} from '../actions/fetchActors'
 import UpdateAccount from '../components/UpdateAccount'
+// import { Redirect } from 'react-router'
 class UserShow extends React.Component {
-     updateAccount = () => {
-      return  <UpdateAccount/>
-   }
-  
-   render(){
-  
 
-          
-   
+     updateAccount = () => {
+      return <UpdateAccount/>
+   }
+   render(){
        return (
-      
            <div>
                     <Navbar bg="light" expand="lg">
                     <Navbar.Brand >Stella <span role='img' aria-label="tv">📺</span></Navbar.Brand>
@@ -28,8 +24,10 @@ class UserShow extends React.Component {
                         <NavLink ><Link to="/actors"><button>Actors </button> </Link>    </NavLink> 
                         <NavLink ><Link to="/new"><button>Create An Actor </button> </Link> </NavLink> 
                      {this.props.user.name && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{this.props.user.name  ? this.props.user.name : "🤵"}</span></button></NavLink>  }
-                    { this.props.user.attributes && <NavLink ><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{ this.props.user.attributes.name  ? this.props.user.attributes.name   :  "🤵"}</span></button></NavLink>      } 
-                   { this.props.user ?  <button onClick={this.updateAccount}>Update your profile</button> : null  } 
+                    { this.props.user.attributes && <NavLink><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{ this.props.user.attributes.name  ? this.props.user.attributes.name  : "🤵"}</span></button></NavLink>      } 
+                   {/* { this.props.user && <NavLink><Link to="/updateaccount"> <button onClick={this.updateAccount}><span  role="img" arial-label="user-show">Update your profile</span></button></Link> </NavLink>   }  */}
+                {/* <button onClick={this.updateAccount}>hey </button> */}
+                <UpdateAccount/>
                         </Nav>
                     </Navbar.Collapse>
                     </Navbar>

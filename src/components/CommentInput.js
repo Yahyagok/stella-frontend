@@ -9,7 +9,6 @@ class CommentInput extends React.Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value }) 
     }
-
     handleSubmit = (event) => {
         event.preventDefault()
     let data = {
@@ -22,12 +21,9 @@ class CommentInput extends React.Component {
             review: '',
             actor_id: '',
             user_id: ''
-         })
-        
+         }) 
     }
-
     render(){   
- 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -39,7 +35,6 @@ class CommentInput extends React.Component {
         )
     }
 }
-
 const msp = (state) => {
     return {
         actorId: state.actors.actorId,

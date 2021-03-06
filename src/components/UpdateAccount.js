@@ -3,11 +3,13 @@ import React from 'react'
 
 const UpdateAccount = (props) => {
 
+  let handleChange = () => {
+        
+    }
 
     return (
         <div>
-            hey
-            {console.log("hey")}
+            <button onClick={handleChange}>Update Account</button>
         </div>
 
     )
