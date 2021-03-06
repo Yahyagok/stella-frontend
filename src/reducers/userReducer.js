@@ -17,6 +17,21 @@ export default function userReducer(prevState=initialState , action ){
            case 'GET_LOGIN_SIGNUP_USER':   
                    let user = action.payload
                    return {...prevState, user: user}
+           case 'UPDATE_ACCOUNT':
+                let userId = action.paload.id
+                let updatedUsers = prevState.users.map(user => {
+                        if(user.id === userId ){
+                                user = { ...action.payload }
+                                return {user}
+                        }
+                        else { 
+                                return user 
+                        }
+                })
+                return {...prevState, users: updatedUsers }
+
+                
+
            default:
                     return prevState                  
     }

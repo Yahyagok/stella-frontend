@@ -1,7 +1,7 @@
 export function updateComment(data, commentId){
  
     return(dispatch) => {
-       debugger
+      
         fetch(`http://localhost:3000/api/v1/comments/${commentId}`, { 
             method: 'PATCH',
             headers: {
