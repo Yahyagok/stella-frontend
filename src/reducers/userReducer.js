@@ -18,7 +18,7 @@ export default function userReducer(prevState=initialState , action ){
                    let user = action.payload
                    return {...prevState, user: user}
            case 'UPDATE_ACCOUNT':
-                let userId = action.paload.id
+                let userId = action.payload.id
                 let updatedUsers = prevState.users.map(user => {
                         if(user.id === userId ){
                                 user = { ...action.payload }

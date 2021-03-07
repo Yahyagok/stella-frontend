@@ -1,19 +1,31 @@
 import React from 'react'
+import { connect } from 'react-redux'
+// import {Redirect} from 'react-router-dom'
+import UpdateCurrentUser from '../components/UpdateCurrentUser'
+import { Link } from 'react-router-dom'
 
 
-const UpdateAccount = (props) => {
 
-  let handleChange = () => {
-        
+class UpdateAccount extends React.Component {
+    state = {
+        name: '',
+        password: ''
     }
 
+
+render(){
     return (
         <div>
-            <button onClick={handleChange}>Update Account</button>
+            <Link to={`updatecurrentuser/${this.props.userId}`}><button >Update Account</button></Link>
         </div>
-
-    )
-
-
+        )   
+    }
 }
-export default UpdateAccount;
+
+const msp = state => {
+    return {
+        userId: state.users.userId,
+        user: state.users.user
+    }
+}
+export default connect(msp)(UpdateAccount);

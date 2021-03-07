@@ -1,6 +1,7 @@
 export function updateAccount(data, userId){
-    return() => {
-        fetch(`http://localhost:3000/api/v1/comments/${userId}`, {
+    debugger
+    return(dispatch) => {
+        fetch(`http://localhost:3000/api/v1/users/${userId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
