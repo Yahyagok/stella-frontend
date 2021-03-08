@@ -7,23 +7,19 @@ class UpdateCurrentUser extends React.Component {
         name: '',
         password: ''
     }
-
     handleChange = (event) => {
      this.setState({  [event.target.name]: event.target.value })  
     }
 
     handleSubmit = () => {
+        console.log("you submit it")
       let data = { 
             name: this.state.name,
             password: this.state.password
         }
-        this.props.updateAccount(data, this.props.userId )
+        this.props.updateAccount(data, parseInt(this.props.userId) )
         this.props.history.push(`/actors`)
     }
-
-
-
-
     render(){
       return (
           <div>

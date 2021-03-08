@@ -10,9 +10,10 @@ export function updateAccount(data, userId){
             body: JSON.stringify( {user: { password: data.password, name: data.name  } }  )
         })
         .then(res => res.json())
-        .then(user => dispatch({ 
+        .then(user => dispatch({   
             type: 'UPDATE_ACCOUNT',
-            payload: user
+            payload: user,
+        
          }))
     }
 }

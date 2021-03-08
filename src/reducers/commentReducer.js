@@ -27,8 +27,7 @@ export default function commentReducer(prevState=initialState, action ){
                 let commentDeletedId = action.payload  
                 return { 
                         ...prevState, comments: prevState.comments.filter( (comment) => comment.id !==  commentDeletedId)  
-                }
-               
+                }       
            case 'FIND_COMMENT':   
                    let id = action.payload
                    return {...prevState, commentId: id }
