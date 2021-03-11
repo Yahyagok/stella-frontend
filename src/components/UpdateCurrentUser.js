@@ -13,11 +13,12 @@ class UpdateCurrentUser extends React.Component {
     }
 
     handleSubmit = () => {
+        console.log("hey")
       let data = { 
             name: this.state.name,
             password: this.state.password
         }
-        this.props.updateAccount(data, parseInt(this.props.userId) )
+      this.props.updateAccount(data, parseInt(this.props.userId) )
         this.props.history.push(`/actors`)
     }
     render(){
@@ -25,7 +26,7 @@ class UpdateCurrentUser extends React.Component {
           <div>
            <label>Update Your Profile </label>
               <input type="text" placeholder='name' name="name" value= {this.state.name} onChange={this.handleChange}/><br/>
-              <input type="text" placeholder='password' name="password" value= {this.state.password} onChange={this.handleChange}/><br/>
+              <input type="password" placeholder='password' name="password" value= {this.state.password} onChange={this.handleChange}/><br/>
               <input type="submit" variant="primary"  onClick={this.handleSubmit} /> 
           </div>
       )
@@ -44,4 +45,4 @@ const msp = state => {
 //         updateAccount: (data, userId) => dispatch({ type: 'UPDATE_ACCOUNT', payload: data, userId  })
 //     }
 // }
-export default connect(msp, {updateAccount})(UpdateCurrentUser)
+export default connect(msp, {updateAccount} )(UpdateCurrentUser)

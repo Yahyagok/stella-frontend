@@ -22,14 +22,14 @@ export default function userReducer(prevState=initialState , action ){
                 let userId = parseInt(action.payload.data.id)
                 let updatedUsers = prevState.users.map(user => {
                         if(user.id === userId ){
-                                user = { ...action.payload }
+                                user = { ...action.payload.data }
                                 return {user}
                         }
                         else { 
                                 return user 
                         }
                 })
-                return {...prevState, users: updatedUsers, user: action.payload }
+                return {...prevState, users: updatedUsers, user: action.payload.data }
 
                 
 

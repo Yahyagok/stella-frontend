@@ -12,6 +12,7 @@ class UserShow extends React.Component {
       return <UpdateAccount/>
    }
    render(){
+       console.log(this.props.user)
        return (
            <div>
                     <Navbar bg="light" expand="lg">
