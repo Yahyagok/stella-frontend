@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {updateAccount} from '../actions/updateAccount'
-
 class UpdateCurrentUser extends React.Component { 
-
     state = {
         name: '',
         password: ''
@@ -13,7 +11,7 @@ class UpdateCurrentUser extends React.Component {
     }
 
     handleSubmit = () => {
-        console.log("hey")
+      
       let data = { 
             name: this.state.name,
             password: this.state.password
@@ -39,10 +37,9 @@ const msp = state => {
         user: state.users.user
     }
 }
-
-// const mdp = dispatch => {
-//     return {
-//         updateAccount: (data, userId) => dispatch({ type: 'UPDATE_ACCOUNT', payload: data, userId  })
-//     }
-// }
-export default connect(msp, {updateAccount} )(UpdateCurrentUser)
+const mdp = dispatch => {
+    return {
+        updateAccount: (data, userId) => dispatch(updateAccount(data, userId))
+    }
+}
+export default connect(msp, mdp )(UpdateCurrentUser)
