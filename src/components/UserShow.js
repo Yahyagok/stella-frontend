@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import {  Navbar, NavLink, Nav } from "react-bootstrap"
 // import { fetchActors} from '../actions/fetchActors'
 import UpdateAccount from '../components/UpdateAccount'
-import Favorites from '../components/Favorites'
 
 // import { Redirect } from 'react-router'
 class UserShow extends React.Component {
@@ -28,7 +27,7 @@ class UserShow extends React.Component {
                     { this.props.user.attributes && <NavLink><button onClick={this.props.logout} ><span role="img" arial-label="user-show">{ this.props.user.attributes.name  ? this.props.user.attributes.name  : "🤵"}</span></button></NavLink>      } 
                    {/* { this.props.user && <NavLink><Link to="/updateaccount"> <button onClick={this.updateAccount}><span  role="img" arial-label="user-show">Update your profile</span></button></Link> </NavLink>   }  */}
                 {/* <button onClick={this.updateAccount}>hey </button> */}
-                <Favorites/>
+           
                 <UpdateAccount/>
                         </Nav>
                     </Navbar.Collapse>

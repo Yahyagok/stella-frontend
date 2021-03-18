@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link} from 'react-router-dom'
+
 
 const Favorites = (props) => {
-    let user = props.users.find(user => user.id === props.match.params.id)
+    // let user = props.users && props.users.find(user => parseInt(user.id) === props.match.params.id)
+    console.log(props.users)
     return (
+      
         <div> 
-             <Link to={`favorites/${props.userId}`}><button ></button></Link>
-             {user.attributes.favorites}
+              <button >Add To Favorites</button>
         </div>
     )
 }

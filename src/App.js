@@ -90,8 +90,8 @@ class App extends React.Component {
             <Route path='/updatecomment/:id' render={(routerProps ) => <UpdateComment {...routerProps} />}/> 
             <Route path='/deletecomment/:id' render={(routerProps ) => <DeleteComment {...routerProps} />}/>   
             <Route exact  path="/new" render={(routerProps) => <ActorInput {...routerProps}  />}   />
-            <Route path="/updateaccount/:id" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
             <Route path="/updatecurrentuser/:id" render={(routerProps) => <UpdateCurrentUser {...routerProps} /> }/> 
+            <Route  exact path="/updateaccount" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
             <Route path="/favorites/:id" render={(routerProps) => <Favorites {...routerProps} /> }/> 
             <Route 
               exact path='/' 

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 // import Comment from '../components/Comment'
 import CommentsContainer from '../containers/CommentsContainer'
 import {  Container, Row, Col } from "react-bootstrap"
+import Favorites from '../components/Favorites'
 import Image from 'react-bootstrap/Image'
 
 // import {SideBy} from '../styled'
@@ -29,6 +30,7 @@ const Actor = (props) => {
                 <div>Description: {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
                 <CommentsContainer /> 
+                <Favorites /> 
    
                 {/* <Comment />  */}        
                 <LikeInput actor={actor}  />   
