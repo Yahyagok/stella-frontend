@@ -8,7 +8,7 @@ export default function userReducer(prevState=initialState , action ){
             case 'FETCH_USERS':
                     return {...prevState, users: action.payload.data}
             case 'ADD_USER':
-                    return [...prevState, action.payload.data] 
+                    return {...prevState, users: [...prevState.users, action.payload.data ] } 
             case 'GET_USER':
                     let id = action.payload
                     return  { ...prevState,  userId: id}     
