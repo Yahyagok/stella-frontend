@@ -28,7 +28,6 @@ class UpdateCurrentUser extends React.Component {
           </div>
       )
     }
- 
 }
 const msp = state => {
     return {

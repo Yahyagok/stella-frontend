@@ -11,7 +11,6 @@ render(){
         )   
     }
 }
-
 const msp = state => {
     return {
         userId: state.users.userId,

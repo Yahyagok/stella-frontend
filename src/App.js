@@ -19,6 +19,7 @@ import DeleteComment from './components/DeleteComment'
 import ActorInput from './components/ActorInput'
 import UpdateAccount from './components/UpdateAccount'
 import UpdateCurrentUser from './components/UpdateCurrentUser'
+import Favorites from './components/Favorites'
 
 class App extends React.Component {
     state = { 
@@ -89,8 +90,9 @@ class App extends React.Component {
             <Route path='/updatecomment/:id' render={(routerProps ) => <UpdateComment {...routerProps} />}/> 
             <Route path='/deletecomment/:id' render={(routerProps ) => <DeleteComment {...routerProps} />}/>   
             <Route exact  path="/new" render={(routerProps) => <ActorInput {...routerProps}  />}   />
-            <Route path="/updateaccount" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
-            <Route path="/updatecurrentuser" render={(routerProps) => <UpdateCurrentUser {...routerProps} /> }/> 
+            <Route path="/updateaccount/:id" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
+            <Route path="/updatecurrentuser/:id" render={(routerProps) => <UpdateCurrentUser {...routerProps} /> }/> 
+            <Route path="/favorites/:id" render={(routerProps) => <Favorites {...routerProps} /> }/> 
             <Route 
               exact path='/' 
               render={props => (

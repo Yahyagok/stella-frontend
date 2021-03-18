@@ -12,15 +12,8 @@ import Image from 'react-bootstrap/Image'
 
 
 const Actor = (props) => {
-    let actor = props.actors.find(actor => actor.id === props.match.params.id)
-
-
-
-        //    
-        
-        console.log(actor.id, props.actorId )  
+    let actor = props.actors.find(actor => actor.id === props.match.params.id)    
     return (   
-   
         <div>
                 <Container>
                      <Row>
@@ -33,7 +26,7 @@ const Actor = (props) => {
                 </Container> 
                 <div> Name: {actor.attributes.name}</div> 
                 <div>Contact Num: {actor.attributes.contact_info}</div> 
-                <div>Description:  {actor.attributes.description}</div>
+                <div>Description: {actor.attributes.description}</div>
                 <CommentInput loggedInUser={props.loggedInUser}/>
                 <CommentsContainer /> 
    
