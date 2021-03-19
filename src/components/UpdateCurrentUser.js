@@ -9,8 +9,7 @@ class UpdateCurrentUser extends React.Component {
     handleChange = (event) => {
      this.setState({  [event.target.name]: event.target.value })  
     }
-    handleSubmit = () => {
-      
+    handleSubmit = () => {  
       let data = { 
             name: this.state.name,
             password: this.state.password
@@ -40,4 +39,4 @@ const mdp = dispatch => {
         updateAccount: (data, userId) => dispatch(updateAccount(data, userId))
     }
 }
-export default connect(msp, mdp )(UpdateCurrentUser)
+export default connect(msp,mdp)(UpdateCurrentUser)

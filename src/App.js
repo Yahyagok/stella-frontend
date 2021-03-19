@@ -4,6 +4,7 @@ import ActorsContainer from './containers/ActorsContainer'
 // import CommentsContainer from './containers/CommentsContainer'
 import LikesContainer from './containers/LikesContainer.js'
 import UsersContainer from './containers/UsersContainer.js'
+import FavoritesContainer from './containers/FavoritesContainer.js'
 import axios from 'axios'
 import {Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
@@ -12,6 +13,7 @@ import SignUp from './components/SignUp'
 import NavBar from './components/NavBar'
 import { fetchActors } from './actions/fetchActors'
 import { fetchUsers } from './actions/fetchUsers'
+import { fetchFavorites } from './actions/fetchFavorites'
 import { connect} from 'react-redux';
 import Actor from './components/Actor';
 import UpdateComment from './components/UpdateComment'
@@ -20,6 +22,7 @@ import ActorInput from './components/ActorInput'
 import UpdateAccount from './components/UpdateAccount'
 import UpdateCurrentUser from './components/UpdateCurrentUser'
 import Favorites from './components/Favorites'
+import UserPage from './components/UserPage'
 
 class App extends React.Component {
     state = { 
@@ -59,6 +62,7 @@ class App extends React.Component {
     componentDidMount() {
        this.props.fetchActors()
        this.props.fetchUsers()
+       this.props.fetchFavorites()
       this.loginStatus()
       const user_id = localStorage.user_id
       if(user_id){
@@ -84,6 +88,7 @@ class App extends React.Component {
             <Switch> 
             <Route exact path="/users" render={() => <UsersContainer />}   />
             <Route exact path="/likes" render={() => <LikesContainer />}   />
+            <Route exact path="/favorites" render={() => <FavoritesContainer />}   />
             {/* <Route exact path="/comments" render={() => <CommentsContainer  />}   /> */}
             <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} loggedInUser={this.props.loggedInUser} />}/>
             <Route exact path="/actors" render={(routerProps) => <ActorsContainer {...routerProps}  loggedInUser={ this.state.user } handleLogin= {this.handleLogin} />}   />
@@ -93,6 +98,8 @@ class App extends React.Component {
             <Route path="/updatecurrentuser/:id" render={(routerProps) => <UpdateCurrentUser {...routerProps} /> }/> 
             <Route  exact path="/updateaccount" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
             <Route path="/favorites/:id" render={(routerProps) => <Favorites {...routerProps} /> }/> 
+            <Route path="/user/:id" render={(routerProps) => <UserPage {...routerProps} /> }/> 
+      
             <Route 
               exact path='/' 
               render={props => (
@@ -129,7 +136,7 @@ const mapStateToProps = (state) => {
 //     fetchUsers: () => dispatch( { type: 'FETCH_USERS'})
 //   }
 // }
-export default connect(mapStateToProps, {fetchActors, fetchUsers})(App)
+export default connect(mapStateToProps, {fetchActors, fetchUsers, fetchFavorites})(App)
 // { this.state.isLoggedIn ?  <ActorsContainer  loggedInUser={ this.state.user } handleLogin= {this.handleLogin}  /> : null }
 // second argument of connect can be mapDispatchToProps or action function itself
 //if we use action function itself , we need to import thta file   

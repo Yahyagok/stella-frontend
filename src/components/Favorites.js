@@ -1,21 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {addFavorite} from '../actions/addFavorite'
 
 
 const Favorites = (props) => {
     // let user = props.users && props.users.find(user => parseInt(user.id) === props.match.params.id)
-    console.log(props.users)
+    let data = {
+        userId: props.userId, 
+        actorId: props.actorId
+    }
     return (
       
         <div> 
-              <button >Add To Favorites</button>
+              <button onClick={() => props.addFavorite(data)} >Add To Favorites</button>
         </div>
     )
 }
 const msp = state => {
     return {
         userId: state.users.userId,
-        users: state.users
+        users: state.users, 
+        actorId: state.actors.actorId
+        
     }
 }
-export default connect(msp)(Favorites)
+// const mdp = dispatch => {
+//     return {
+//         addFavorite: (data) => dispatch({type: 'ADD_FAVORITES', payload: data })
+//     }
+// }
+export default connect(msp, {addFavorite})(Favorites)

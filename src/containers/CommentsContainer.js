@@ -9,7 +9,7 @@ import Comment from '../components/Comment'
 
 class CommentsContainer extends React.Component {
 
-     componentDidMount =() =>{
+     componentDidMount = () =>{
          this.props.fetchComments()
     }
  

@@ -6,7 +6,7 @@ export const addFavorite = (data) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({ favorite: { actor_id: data.actorId, user_id: data.userId } })
         })
         .then(response => response.json())
         .then(favorite => dispatch({type: 'ADD_FAVORITE', payload: favorite }))

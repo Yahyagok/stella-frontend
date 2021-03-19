@@ -12,17 +12,20 @@ import likeReducer from './reducers/likeReducer'
 import userReducer from './reducers/userReducer'
 import cityReducer from './reducers/cityReducer'
 import agencyReducer from './reducers/agencyReducer'
+import favoriteReducer from './reducers/favoriteReducer'
 import { Route} from 'react-router-dom'
 
 
 
 const rootReducer = combineReducers( { 
+
     actors: actorReducer, 
     comments: commentReducer,
     likes: likeReducer,
     users: userReducer,
     cities: cityReducer,
-    agencies: agencyReducer
+    agencies: agencyReducer, 
+    favorites: favoriteReducer 
    })
 
 // export default rootReducer;
