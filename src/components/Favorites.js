@@ -9,10 +9,20 @@ const Favorites = (props) => {
         userId: props.userId, 
         actorId: props.actorId
     }
+
+   let alreadyFavorite = () => {
+     props.favorites.map(fav => {
+            if((fav.attributes.actor.id !== props.actorId) && (fav.attributes.user.id  !== props.userId) ){
+                   props.addFavorite(data)
+                }
+            })    
+    }
+
+
     return (
       
         <div> 
-              <button onClick={() => props.addFavorite(data)} >Add To Favorites</button>
+              <button onClick={alreadyFavorite} >Add To Favorites</button>
         </div>
     )
 }
@@ -20,7 +30,8 @@ const msp = state => {
     return {
         userId: state.users.userId,
         users: state.users, 
-        actorId: state.actors.actorId
+        actorId: state.actors.actorId,
+        favorites: state.favorites.favorites
         
     }
 }

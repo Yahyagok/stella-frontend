@@ -8,10 +8,7 @@ import CommentsContainer from '../containers/CommentsContainer'
 import {  Container, Row, Col } from "react-bootstrap"
 import Favorites from '../components/Favorites'
 import Image from 'react-bootstrap/Image'
-
 // import {SideBy} from '../styled'
-
-
 const Actor = (props) => {
     let actor = props.actors.find(actor => actor.id === props.match.params.id)    
     return (   

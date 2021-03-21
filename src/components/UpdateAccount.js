@@ -6,7 +6,7 @@ class UpdateAccount extends React.Component {
 render(){
     return (
         <div>
-            <Link to={`updatecurrentuser/${this.props.userId}`}><button >Update Account</button></Link>
+            <Link to={`/updatecurrentuser/${this.props.userId}`}><button >Update Account</button></Link>
         </div>
         )   
     }

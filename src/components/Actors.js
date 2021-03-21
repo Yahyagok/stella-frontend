@@ -29,12 +29,7 @@ class Actors extends  React.Component {
                                      {/* <div  ><Image src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name}  roundedCircle   width={150} height={200} mode='fit' /></div> */}
                                      <Image src={actor.attributes.image_url} alt={actor.attributes.name} roundedCircle   width={150} height={200} mode='fit'/>
                                       <Link onClick={() => this.props.actorId(parseInt(actor.id))} to={`/actors/${actor.id}`}>{actor.attributes.name}</Link>
-                                      <ButtonForFavorite   /> 
-                                     
-                                                  
-                                               
-                             
-                        
+                                      <ButtonForFavorite /> 
                                    </div>
                                </Col>
                               </Row>             

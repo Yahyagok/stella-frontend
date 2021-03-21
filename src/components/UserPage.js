@@ -1,20 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 const UserPage =(props) => {
-//    let favoriteActors = props.favorites.filter(fav => fav.attributes.user.id === props.userId)
-// let uniqueActors = props.favorites.filter((item, i, ar) => ar.indexOf(item) === i);
-// let uniqueActors = [...new Set(props.favorites.attributes.user.id )]
-//  console.log(props.favorites)
-const uniqueActors = [...new Set(props.favorites.map(fav => fav.attributes.actor && fav.attributes.actor.name))]
-
-
-
-console.log(uniqueActors)
+const uniqueActors = [...new Set(props.favorites.map(fav => fav.attributes))]
     return (
         <div>
-            { uniqueActors.map(fav => 
-                <div> { fav.attributes.actor  ? fav.attributes.actor.name : null }</div>
-                    )}
+           { uniqueActors.map(fav => ( fav.user.id === props.userId  && <div> <Link to={`/actor/${fav.actor.id}`}>{fav.actor.name}</Link> </div>  ) )  }
+
         </div>
     )
 }

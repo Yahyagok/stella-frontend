@@ -6,7 +6,6 @@ import {  Navbar, NavLink, Nav } from "react-bootstrap"
 // import { fetchActors} from '../actions/fetchActors'
 import UpdateAccount from '../components/UpdateAccount'
 import YourFavoriteActors from '../components/YourFavoriteActors'
-
 // import { Redirect } from 'react-router'
 class UserShow extends React.Component {
      updateAccount = () => {
@@ -29,7 +28,6 @@ class UserShow extends React.Component {
                          {/* { this.props.user && <NavLink><Link to="/updateaccount"> <button onClick={this.updateAccount}><span  role="img" arial-label="user-show">Update your profile</span></button></Link> </NavLink>   }  */}
                          {/* <button onClick={this.updateAccount}>hey </button> */}
                     <YourFavoriteActors/>
-           
                      <UpdateAccount/>
                         </Nav>
                     </Navbar.Collapse>
@@ -44,11 +42,8 @@ const msp = state => {
         user: state.users.user,
         userId: state.users.userId
     }
-
 }
 export default connect(msp)(UserShow)
-
-
 // burdaki id yi alip , msp yi userinput ta kullnamak 
 //thaht is it 
 // onClick={() => {props.getUser(props.currentUser.id)}}
