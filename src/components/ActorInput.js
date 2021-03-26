@@ -81,7 +81,7 @@ class ActorInput extends React.Component {
                     </FormGroup>
                     <FormGroup controlId="formBasicName">
                     <FormLabel>Actors image:</FormLabel>
-                    <FormControl type="file" name="image_url"  multiple="false" onChange={this.onImageChange} accept="image/png, image/jpeg, image/jpg" /><br/>
+                    <FormControl type="file" name="image_url"  multiple={false} onChange={this.onImageChange} accept="image/png, image/jpeg, image/jpg" /><br/>
                     </FormGroup>
                     <FormGroup controlId="formBasicName">
                     <FormLabel>Contact Info:</FormLabel>
@@ -94,13 +94,13 @@ class ActorInput extends React.Component {
                     <FormGroup controlId="formBasicName">
                     <FormLabel>City:</FormLabel>
                     <select type="number" value= {this.state.cityId} name="cityId" onChange={this.handleCityId} onClick={this.cityIdOnClick}>
-                     {this.props.cities.map(city => <option value={city.id}>{city.attributes.name} </option>) }
+                     {this.props.cities.map(city => <option key={city.id} value={city.id}>{city.attributes.name} </option>) }
                     </select>
                     </FormGroup>
                     <FormGroup controlId="formBasicName">
                     <FormLabel>Agency:</FormLabel>
                     <select type="number" value= {this.state.agencyId} name="agencyId" onChange={this.handleAgencyId} onClick={this.agencyOnClick}>
-                    {this.props.agencies.map(agency => <option value={agency.id}>{agency.attributes.name}-{ agency.attributes.location} </option>) }
+                    {this.props.agencies.map(agency => <option key={agency.id} value={agency.id}>{agency.attributes.name}-{ agency.attributes.location} </option>) }
                     </select>
                     </FormGroup>
                     <Button type="submit" variant="primary">Submit</Button>
