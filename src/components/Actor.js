@@ -15,7 +15,7 @@ const Actor = (props) => {
         <div>
                 <Container>
                      <Row>
-                     <Col xs={6} md={4} flex-row>
+                     <Col xs={6} md={4} flex-row="true">
                 {actor ? null : <Redirect to='/actors'/> }
      {/* {actor.attributes.image && <div><Image src={require(`../photo/${actor.attributes.image}`)} alt={actor.attributes.name} roundedCircle  /></div>  }  */}
                              <div><Image src={actor.attributes.image_url} alt={actor.attributes.name}   roundedCircle   width={150} height={200} mode='fit'  /> </div>                    

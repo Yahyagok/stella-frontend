@@ -5,7 +5,7 @@ const Comments = (props) => {
     return (   
         <div>
             {props.comments&& props.comments.map(comment =>
-                <li >
+                <li key={comment.id}>
                   {comment.attributes.review }
                 </li> 
                 )}
