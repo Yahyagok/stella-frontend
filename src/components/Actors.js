@@ -18,7 +18,7 @@ class Actors extends  React.Component {
 
     render(){
             let allActors = this.props.actors
-            let filteredActors =  allActors.filter( actor => actor.attributes.name.toLowerCase().includes(this.state.search.toLowerCase() ))
+            let filteredActors =  allActors.filter(actor =>  actor.attributes.name.toLowerCase().includes(this.state.search.toLowerCase()  ))
             return (
                  <div style={{display: 'grid', gridTemplateColumns: 'repeat( 5 , 1fr )', width: '600px',  margin: '100px',gap: '100px', textAlign: 'left',  lineHeight: '45px',   fontSize: '15px'}}  >
                       {filteredActors && filteredActors.map(actor => 

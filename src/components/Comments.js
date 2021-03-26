@@ -1,8 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
 import {connect} from 'react'
-
-
 const Comments = (props) => {
     return (   
         <div>
@@ -14,13 +12,11 @@ const Comments = (props) => {
         </div>
     )
 }
-
 const msp = state => {
     return {
         commentId: state.comments.commentId
     }
 }
-
 const mdp = dispatch => {
     return {
         getCommentId: (id) => dispatch({ type: 'FIND_COMMENT', payload: id })

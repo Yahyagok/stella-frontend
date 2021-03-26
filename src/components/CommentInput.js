@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect} from 'react-redux'
 import {addComment} from '../actions/addComment'
-
 class CommentInput extends React.Component {
     state = {
         review: '',
@@ -41,4 +40,11 @@ const msp = (state) => {
         userId: state.users.userId
     }
 }
-export default connect(msp, {addComment})(CommentInput)
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addComment: (data) =>  dispatch(addComment(data))
+    }
+}
+
+export default connect(msp, mapDispatchToProps)(CommentInput)

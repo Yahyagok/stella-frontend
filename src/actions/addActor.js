@@ -8,7 +8,7 @@ export const addActor = (data) => {
             
         })
         .then(response => response.json())
-        .then(actor => dispatch({ type: 'ADD_ACTOR', payload: actor }))
+        .then(actor => dispatch({ type: 'ADD_ACTOR', payload: actor }, console.log(actor)))
     }   
 }
 

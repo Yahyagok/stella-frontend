@@ -17,10 +17,7 @@ const Favorites = (props) => {
                 }
             })    
     }
-
-
-    return (
-      
+    return (  
         <div> 
               <button onClick={alreadyFavorite} >Add To Favorites</button>
         </div>
@@ -31,8 +28,7 @@ const msp = state => {
         userId: state.users.userId,
         users: state.users, 
         actorId: state.actors.actorId,
-        favorites: state.favorites.favorites
-        
+        favorites: state.favorites.favorites     
     }
 }
 // const mdp = dispatch => {

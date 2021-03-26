@@ -15,7 +15,7 @@ class  Like  extends React.Component{
                 Likes: { like.length}
             </div>
         )
-    }
+      }
     }
 
 const msp = (state) => {

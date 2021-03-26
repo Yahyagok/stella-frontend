@@ -16,4 +16,4 @@ export const addComment = (data) => {
 }
 
 
-// this is the way how you get info as payloan and in reducer you added to state 
+// this is the way how you get info as payload and in reducer you added to state 

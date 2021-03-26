@@ -3,7 +3,7 @@ import { connect} from 'react-redux'
 import {addActor} from '../actions/addActor'
 import {fetchCities} from '../actions/fetchCities'
 import {fetchAgencies} from '../actions/fetchAgencies'
-import { Button, FormGroup, FormLabel, FormControl,  } from 'react-bootstrap'
+import { Button, FormGroup, FormLabel, FormControl } from 'react-bootstrap'
 
 
 class ActorInput extends React.Component {
@@ -30,9 +30,7 @@ class ActorInput extends React.Component {
         formData.append('city_id', parseInt(this.state.cityId)); // cityId in state and input 
         formData.append('agency_id', parseInt(this.state.agencyId)); // agencyId in state and input 
         formData.append('description', this.state.description);
-        for (let [key, value] of formData.entries()) { 
-          console.log(key, value);
-         }
+    
        
         this.props.addActor(formData)
         this.setState({ 
@@ -44,6 +42,7 @@ class ActorInput extends React.Component {
             description: ''  
          })
          this.props.history.push('/actors')
+        
     }
 
     onImageChange = (event) => {
