@@ -1,4 +1,6 @@
-#Read me 
+##Read me 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 React.js frontend and Rails backend propject. React-bootstrap is used. This  is a project actor can be able to create a  portfolio. User could be able to create his/her profile as an actor. Also user can give a comment to an actor and like an actor.
