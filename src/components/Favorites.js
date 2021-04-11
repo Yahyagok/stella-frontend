@@ -32,9 +32,5 @@ const msp = state => {
         favorites: state.favorites.favorites     
     }
 }
-// const mdp = dispatch => {
-//     return {
-//         addFavorite: (data) => dispatch({type: 'ADD_FAVORITES', payload: data })
-//     }
-// }
+
 export default connect(msp, {addFavorite})(Favorites)
