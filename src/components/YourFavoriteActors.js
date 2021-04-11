@@ -6,7 +6,7 @@ class YourFavoriteActors extends React.Component {
     render(){
         return (
             <div>
-                <Link to={`/user/${this.props.userId}`}><button>Your Favorite Actors </button></Link>
+            {this.props.userId && <Link to={`/user/${this.props.userId}`}><button>Your Favorite Actors </button></Link>    } 
             </div>
         )
     }

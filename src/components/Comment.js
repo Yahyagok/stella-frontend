@@ -79,11 +79,6 @@ const mdp = dispatch => {
 export default connect(msp, mdp)(Comment)
 
 
-// onClick={this.multipleOnClickForUpdateButton, console.log(eachComment.id)}
 
-//onClick={() => this.props.getCommentId(parseInt(this.props.id))}
-
-
-//       <Route path='/actors/:id' render={(routerProps ) => <Actor {...routerProps} loggedInUser={this.props.loggedInUser} />}/>
 
 

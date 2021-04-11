@@ -17,6 +17,7 @@ const Favorites = (props) => {
                 }
             })    
     }
+    console.log(props.favorites)
     return (  
         <div> 
               <button onClick={alreadyFavorite} >Add To Favorites</button>

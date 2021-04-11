@@ -23,7 +23,6 @@ import UpdateAccount from './components/UpdateAccount'
 import UpdateCurrentUser from './components/UpdateCurrentUser'
 import Favorites from './components/Favorites'
 import UserPage from './components/UserPage'
-
 class App extends React.Component {
     state = { 
         isLoggedIn: false,
@@ -99,7 +98,6 @@ class App extends React.Component {
             <Route  exact path="/updateaccount" render={(routerProps) => <UpdateAccount {...routerProps} /> }/> 
             <Route path="/favorites/:id" render={(routerProps) => <Favorites {...routerProps} /> }/> 
             <Route path="/user/:id" render={(routerProps) => <UserPage {...routerProps} /> }/> 
-      
             <Route 
               exact path='/' 
               render={props => (

@@ -19,8 +19,6 @@ class ButtonForFavorite extends React.Component {
         <div onClick={this.handleFavorite}> 
            <button> Like or Dislike: {this.state.count} </button> 
         </div>
-
-    
         )
     } 
 }  
