@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect} from 'react-redux';
-//  import {findUser} from '../actions/findUser';
- import {Link} from 'react-router-dom';
- import axios from 'axios';
-//  import  { loginUser }  from '../actions/loginUser'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import { Button, FormLabel, FormGroup, FormControl } from 'react-bootstrap'
 class Login extends React.Component {
         state = { 

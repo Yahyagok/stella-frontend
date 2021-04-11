@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect} from 'react-redux'
 import {addLike} from '../actions/addLike'
-// import {signUpUser} from '../actions/signUpUser'
 import Like from '../components/Like'
 
 class LikeInput extends React.Component {
