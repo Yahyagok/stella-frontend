@@ -11,5 +11,4 @@ export function deleteActor(actorId){
             payload: actorId
         }))
     }
-
     }
