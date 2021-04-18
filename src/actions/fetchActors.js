@@ -5,11 +5,6 @@ export function fetchActors(){
     .then(actors => dispatch({
         type: 'FETCH_ACTORS', 
         payload: actors
-    
     }))
     }
-   
 }
-
-//dispatch(actionObject)
-// action creator creates an action object 
