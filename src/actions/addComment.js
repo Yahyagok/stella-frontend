@@ -1,5 +1,4 @@
 export const addComment = (data) => {
- 
     return (dispatch) => {
         fetch('http://localhost:3000/api/v1/comments', {
             method:'POST',
@@ -11,8 +10,7 @@ export const addComment = (data) => {
         })
         .then(response => response.json())
         .then(comment => dispatch({ type: 'ADD_COMMENT', payload: comment} ))
-    }
-    
+    }   
 }
 
 
