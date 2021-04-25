@@ -7,11 +7,9 @@ import Image from 'react-bootstrap/Image'
 import ButtonForFavorite from '../components/ButtonForFavorite'
 
 class Actors extends  React.Component {
-
     state = {
         search: '' 
     }
-
     handleSearch =(event) => {
         this.setState({ search: event.target.value})
     }

@@ -3,12 +3,10 @@ import { Redirect} from 'react-router-dom'
 import CommentInput from '../components/CommentInput'
 import LikeInput from '../components/LikeInput'
 import { connect } from 'react-redux'
-// import Comment from '../components/Comment'
 import CommentsContainer from '../containers/CommentsContainer'
 import {  Container, Row, Col } from "react-bootstrap"
 import Favorites from '../components/Favorites'
 import Image from 'react-bootstrap/Image'
-// import {SideBy} from '../styled'
 const Actor = (props) => {
     let actor = props.actors.find(actor => actor.id === props.match.params.id)    
     return (   
