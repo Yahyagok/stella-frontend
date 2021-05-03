@@ -2,9 +2,6 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import FindUpdateComment from '../components/FindUpdateComment'
-// import UpdateComment from '../components/UpdateComment'
-// import { Route} from 'react-router-dom'
-
 class Comment extends React.Component {
     state = { 
         review: ''
