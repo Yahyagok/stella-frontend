@@ -9,7 +9,6 @@ class FindUpdateComment extends React.Component {
         this.props.getCommentId(parseInt(this.props.id))
     }
     handleDelete = () => { 
-  
         this.props.getCommentId(parseInt(this.props.id)) 
         this.props.deleteComment(parseInt(this.props.id))
           return  <Redirect to='/actors/:id' />   

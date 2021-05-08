@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {addFavorite} from '../actions/addFavorite'
 
-
 const Favorites = (props) => {
     // let user = props.users && props.users.find(user => parseInt(user.id) === props.match.params.id)
     let data = {
@@ -32,5 +31,4 @@ const msp = state => {
         favorites: state.favorites.favorites     
     }
 }
-
 export default connect(msp, {addFavorite})(Favorites)
