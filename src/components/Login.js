@@ -106,11 +106,3 @@ class Login extends React.Component {
 export default connect(msp, mdp)(Login)
 
 
-
-// return {
-//   if (this.state.redirect === true) {
-//     <Redirect to="/actors" />
-//   }
-// }
-
-
